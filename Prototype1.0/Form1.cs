@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.OleDb;
+//using Excel = Microsoft.Office.Interop.Excel;
+//using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Prototype1._0
 {
@@ -75,13 +78,32 @@ namespace Prototype1._0
                         System.IO.FileInfo fInfo = new System.IO.FileInfo(theDialog.FileName);
                         string strFileLocation = fInfo.FullName;
 
-                        using (myStream)
-                        {
-                            //Reads the file
-                            System.IO.StreamReader input = new System.IO.StreamReader(strFileLocation);
-                            
-                            //add function to read the text into the form 
-                        }
+                        string pathName = theDialog.FileName;
+                        string fileName = System.IO.Path.GetFileNameWithoutExtension(theDialog.FileName);
+                        DataTable tbContainer = new DataTable();
+                        string strConn = string.Empty;
+                        string sheetName = fileName;
+
+                        FileInfo file = new FileInfo(pathName);
+                        if (!file.Exists) { throw new Exception("Error, file doesn't exists!"); }
+                        string extension = file.Extension;
+                        switch (extension)
+                       {
+                           case ".xls":
+                                strConn = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + pathName + ";Extended Properties='Excel 8.0;HDR=Yes;IMEX=1;'";
+                               break;
+                            case ".xlsx":
+                                strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + pathName + ";Extended Properties='Excel 12.0;HDR=Yes;IMEX=1;'";
+                               break;
+                           default:
+                                strConn = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + pathName + ";Extended Properties='Excel 8.0;HDR=Yes;IMEX=1;'";
+                                break;
+                       }
+                        OleDbConnection cnnxls = new OleDbConnection(strConn);
+                        OleDbDataAdapter oda = new OleDbDataAdapter(string.Format("select * from [{0}$]", sheetName), cnnxls);
+                        oda.Fill(tbContainer);
+
+                        //dtGrid.DataSource = tbContainer;
                     }
                 }
                 catch (Exception ex)
@@ -91,5 +113,6 @@ namespace Prototype1._0
             }
 
         }
+
     }
 }

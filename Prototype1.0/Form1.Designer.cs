@@ -85,6 +85,7 @@ namespace Prototype1._0
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(677, 615);
             this.dataGridView1.TabIndex = 0;
+            
             // 
             // Value
             // 
