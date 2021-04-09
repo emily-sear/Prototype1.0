@@ -85,7 +85,7 @@ namespace Prototype1._0
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(677, 615);
             this.dataGridView1.TabIndex = 0;
-            
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Value
             // 
@@ -152,32 +152,32 @@ namespace Prototype1._0
             this.spreadSheetToolStripMenuItem,
             this.localDataToolStripMenuItem});
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.addToolStripMenuItem.Text = "Add";
             // 
             // spreadSheetToolStripMenuItem
             // 
             this.spreadSheetToolStripMenuItem.Name = "spreadSheetToolStripMenuItem";
-            this.spreadSheetToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.spreadSheetToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
             this.spreadSheetToolStripMenuItem.Text = "SpreadSheet";
             this.spreadSheetToolStripMenuItem.Click += new System.EventHandler(this.spreadSheetToolStripMenuItem_Click);
             // 
             // localDataToolStripMenuItem
             // 
             this.localDataToolStripMenuItem.Name = "localDataToolStripMenuItem";
-            this.localDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.localDataToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
             this.localDataToolStripMenuItem.Text = "Local Data";
             // 
             // instructorValuesToolStripMenuItem
             // 
             this.instructorValuesToolStripMenuItem.Name = "instructorValuesToolStripMenuItem";
-            this.instructorValuesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.instructorValuesToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.instructorValuesToolStripMenuItem.Text = "Instructor Values";
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // resultsToolStripMenuItem
@@ -196,31 +196,31 @@ namespace Prototype1._0
             // graduatedCylinderToolStripMenuItem
             // 
             this.graduatedCylinderToolStripMenuItem.Name = "graduatedCylinderToolStripMenuItem";
-            this.graduatedCylinderToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.graduatedCylinderToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.graduatedCylinderToolStripMenuItem.Text = "Graduated Cylinder";
             // 
             // hydrometerToolStripMenuItem
             // 
             this.hydrometerToolStripMenuItem.Name = "hydrometerToolStripMenuItem";
-            this.hydrometerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.hydrometerToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.hydrometerToolStripMenuItem.Text = "Hydrometer";
             // 
             // buretteToolStripMenuItem
             // 
             this.buretteToolStripMenuItem.Name = "buretteToolStripMenuItem";
-            this.buretteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.buretteToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.buretteToolStripMenuItem.Text = "Burette";
             // 
             // thermometerToolStripMenuItem
             // 
             this.thermometerToolStripMenuItem.Name = "thermometerToolStripMenuItem";
-            this.thermometerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.thermometerToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.thermometerToolStripMenuItem.Text = "Thermometer";
             // 
             // analyticalBalanceToolStripMenuItem
             // 
             this.analyticalBalanceToolStripMenuItem.Name = "analyticalBalanceToolStripMenuItem";
-            this.analyticalBalanceToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.analyticalBalanceToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.analyticalBalanceToolStripMenuItem.Text = "Analytical Balance";
             // 
             // viewToolStripMenuItem
@@ -237,25 +237,25 @@ namespace Prototype1._0
             // graphToolStripMenuItem
             // 
             this.graphToolStripMenuItem.Name = "graphToolStripMenuItem";
-            this.graphToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.graphToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.graphToolStripMenuItem.Text = "Graph";
             // 
             // studentNamesToolStripMenuItem
             // 
             this.studentNamesToolStripMenuItem.Name = "studentNamesToolStripMenuItem";
-            this.studentNamesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.studentNamesToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.studentNamesToolStripMenuItem.Text = "Student Names";
             // 
             // calculateGradesToolStripMenuItem
             // 
             this.calculateGradesToolStripMenuItem.Name = "calculateGradesToolStripMenuItem";
-            this.calculateGradesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.calculateGradesToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.calculateGradesToolStripMenuItem.Text = "Calculate Grades";
             // 
             // clearAllDataToolStripMenuItem
             // 
             this.clearAllDataToolStripMenuItem.Name = "clearAllDataToolStripMenuItem";
-            this.clearAllDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.clearAllDataToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.clearAllDataToolStripMenuItem.Text = "Clear All Data";
             // 
             // pictureBox1

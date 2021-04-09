@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Data.OleDb;
-//using Excel = Microsoft.Office.Interop.Excel;
-//using Excel = Microsoft.Office.Interop.Excel;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Prototype1._0
 {
@@ -68,7 +67,10 @@ namespace Prototype1._0
             theDialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
             theDialog.InitialDirectory = @"C:\";
 
-            if(theDialog.ShowDialog() == DialogResult.OK)
+            DataTable theDataContainer = new DataTable();
+            DataRow row;
+
+            if (theDialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
@@ -80,30 +82,55 @@ namespace Prototype1._0
 
                         string pathName = theDialog.FileName;
                         string fileName = System.IO.Path.GetFileNameWithoutExtension(theDialog.FileName);
-                        DataTable tbContainer = new DataTable();
-                        string strConn = string.Empty;
-                        string sheetName = fileName;
 
-                        FileInfo file = new FileInfo(pathName);
-                        if (!file.Exists) { throw new Exception("Error, file doesn't exists!"); }
-                        string extension = file.Extension;
-                        switch (extension)
-                       {
-                           case ".xls":
-                                strConn = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + pathName + ";Extended Properties='Excel 8.0;HDR=Yes;IMEX=1;'";
-                               break;
-                            case ".xlsx":
-                                strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + pathName + ";Extended Properties='Excel 12.0;HDR=Yes;IMEX=1;'";
-                               break;
-                           default:
-                                strConn = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + pathName + ";Extended Properties='Excel 8.0;HDR=Yes;IMEX=1;'";
-                                break;
-                       }
-                        OleDbConnection cnnxls = new OleDbConnection(strConn);
-                        OleDbDataAdapter oda = new OleDbDataAdapter(string.Format("select * from [{0}$]", sheetName), cnnxls);
-                        oda.Fill(tbContainer);
+                        Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
 
-                        //dtGrid.DataSource = tbContainer;
+                        Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(pathName);
+
+                        Microsoft.Office.Interop.Excel._Worksheet excelWorksheet = excelWorkbook.Sheets[1];
+
+                        Microsoft.Office.Interop.Excel.Range excelRange = excelWorksheet.UsedRange;
+
+                        int rowCount = excelRange.Rows.Count; //get row count of excel sheet
+                        int colCount = excelRange.Columns.Count; //get column cout of excel data 
+
+                        //get row data of Excel sheet 
+
+                        int rowCounter; //used for row index number 
+                        for(int i = 2; i < rowCount; i++)
+                        {
+                            row = theDataContainer.NewRow(); //assign new row to DataTable
+                            rowCounter = 0;
+                            for(int j = 1; j <= colCount; j++) // loop for available column of excel data 
+                            {
+                                //check to see if the cell is empty 
+
+                                if(excelRange.Cells[i, j] != null && excelRange.Cells[i, j].Value2 != null)
+                                {
+                                    row[rowCounter] = excelRange.Cells[i, j].Value2.ToString();
+                                }
+                                else
+                                {
+                                    row[i] = "";
+                                }
+                                rowCounter++;
+                            }
+                            theDataContainer.Rows.Add(row); //add the row to the DataTable
+                        }
+
+
+                        dataGridView1.DataSource = theDataContainer; //assign DataTable as Datasource for DataGridview
+
+                        //close and clean excel process
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
+                        //Marshal.ReleaseComObject(excelRange);
+                       // Marshal.ReleaseComObject(excelWorksheet);
+                        //quit apps
+                        excelWorkbook.Close();
+                        //Marshal.ReleaseComObject(excelWorkbook);
+                        excelApp.Quit();
+                        //Marshal.ReleaseComObject(excelApp);
                     }
                 }
                 catch (Exception ex)
@@ -114,5 +141,9 @@ namespace Prototype1._0
 
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
