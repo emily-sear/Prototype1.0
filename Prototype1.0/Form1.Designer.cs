@@ -29,12 +29,6 @@ namespace Prototype1._0
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SigFigs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Units = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CountedValues = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,62 +59,11 @@ namespace Prototype1._0
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Value,
-            this.SigFigs,
-            this.Units,
-            this.CountedValues,
-            this.Column1});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 75);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(677, 615);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Value
-            // 
-            this.Value.HeaderText = "Value";
-            this.Value.MinimumWidth = 6;
-            this.Value.Name = "Value";
-            this.Value.Width = 125;
-            // 
-            // SigFigs
-            // 
-            this.SigFigs.HeaderText = "Sig Figs";
-            this.SigFigs.MinimumWidth = 6;
-            this.SigFigs.Name = "SigFigs";
-            this.SigFigs.Width = 125;
-            // 
-            // Units
-            // 
-            this.Units.HeaderText = "Units";
-            this.Units.MinimumWidth = 6;
-            this.Units.Name = "Units";
-            this.Units.Width = 125;
-            // 
-            // CountedValues
-            // 
-            this.CountedValues.HeaderText = "Counted Values";
-            this.CountedValues.MinimumWidth = 6;
-            this.CountedValues.Name = "CountedValues";
-            this.CountedValues.Width = 125;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
             // 
             // menuStrip1
             // 
@@ -142,7 +85,7 @@ namespace Prototype1._0
             this.instructorValuesToolStripMenuItem,
             this.exportToolStripMenuItem});
             this.dataToolStripMenuItem.Name = "dataToolStripMenuItem";
-            this.dataToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.dataToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
             this.dataToolStripMenuItem.Text = "Data";
             this.dataToolStripMenuItem.Click += new System.EventHandler(this.dataToolStripMenuItem_Click);
             // 
@@ -189,7 +132,7 @@ namespace Prototype1._0
             this.thermometerToolStripMenuItem,
             this.analyticalBalanceToolStripMenuItem});
             this.resultsToolStripMenuItem.Name = "resultsToolStripMenuItem";
-            this.resultsToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
+            this.resultsToolStripMenuItem.Size = new System.Drawing.Size(69, 26);
             this.resultsToolStripMenuItem.Text = "Results";
             this.resultsToolStripMenuItem.Click += new System.EventHandler(this.resultsToolStripMenuItem_Click);
             // 
@@ -231,7 +174,7 @@ namespace Prototype1._0
             this.calculateGradesToolStripMenuItem,
             this.clearAllDataToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
             this.viewToolStripMenuItem.Text = "View";
             // 
             // graphToolStripMenuItem
@@ -360,11 +303,23 @@ namespace Prototype1._0
             this.textBox5.TabIndex = 13;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 62);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(677, 615);
+            this.dataGridView1.TabIndex = 14;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1180, 716);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
@@ -377,29 +332,21 @@ namespace Prototype1._0
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Measurement Checker";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Value;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SigFigs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Units;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CountedValues;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem dataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
@@ -430,6 +377,7 @@ namespace Prototype1._0
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

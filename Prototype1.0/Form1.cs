@@ -10,9 +10,15 @@ using System.Windows.Forms;
 using System.IO;
 using System.Data.OleDb;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
 
 namespace Prototype1._0
 {
+    /**
+     * Emily Sear (Programmer), Trey Karsten (Design Architecture), Andrew Cizek, and Turner Frazier
+     * 10 April 2021 
+     * Sprint 1 
+     * **/
     public partial class Form1 : Form
     {
         public Form1()
@@ -63,7 +69,7 @@ namespace Prototype1._0
             OpenFileDialog theDialog = new OpenFileDialog();
             theDialog.Title = "Open Excel File with Data";
 
-            //We don't want anything expect .xml files 
+            //We don't want anything expect excel files 
             theDialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
             theDialog.InitialDirectory = @"C:\";
 
@@ -95,7 +101,16 @@ namespace Prototype1._0
                         int colCount = excelRange.Columns.Count; //get column cout of excel data 
 
                         //get row data of Excel sheet 
+                        for(int i = 1; i <= rowCount; i++)
+                        {
+                            for (int j = 1; j <= colCount; j++)
+                            {
+                                theDataContainer.Columns.Add(excelRange.Cells[i, j].Value2.ToString());
+                            }
+                            break;
+                        }
 
+                        
                         int rowCounter; //used for row index number 
                         for(int i = 2; i < rowCount; i++)
                         {
@@ -117,31 +132,37 @@ namespace Prototype1._0
                             }
                             theDataContainer.Rows.Add(row); //add the row to the DataTable
                         }
-
+                       
 
                         dataGridView1.DataSource = theDataContainer; //assign DataTable as Datasource for DataGridview
 
                         //close and clean excel process
                         GC.Collect();
                         GC.WaitForPendingFinalizers();
-                        //Marshal.ReleaseComObject(excelRange);
-                       // Marshal.ReleaseComObject(excelWorksheet);
+                        Marshal.ReleaseComObject(excelRange);
+                        Marshal.ReleaseComObject(excelWorksheet);
+
                         //quit apps
                         excelWorkbook.Close();
-                        //Marshal.ReleaseComObject(excelWorkbook);
+                        Marshal.ReleaseComObject(excelWorkbook);
                         excelApp.Quit();
-                        //Marshal.ReleaseComObject(excelApp);
+                        Marshal.ReleaseComObject(excelApp);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: Could not read file from disk. Original error" + ex.Message);
+                    MessageBox.Show("Error: Could not read file from disk. \nOriginal error " + ex.Message);
                 }
             }
 
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }
