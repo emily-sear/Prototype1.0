@@ -60,6 +60,7 @@ namespace Prototype1._0
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -73,10 +74,12 @@ namespace Prototype1._0
             this.resultsToolStripMenuItem,
             this.viewToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.MdiWindowListItem = this.viewToolStripMenuItem;
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1180, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // dataToolStripMenuItem
             // 
@@ -85,7 +88,7 @@ namespace Prototype1._0
             this.instructorValuesToolStripMenuItem,
             this.exportToolStripMenuItem});
             this.dataToolStripMenuItem.Name = "dataToolStripMenuItem";
-            this.dataToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
+            this.dataToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.dataToolStripMenuItem.Text = "Data";
             this.dataToolStripMenuItem.Click += new System.EventHandler(this.dataToolStripMenuItem_Click);
             // 
@@ -132,7 +135,7 @@ namespace Prototype1._0
             this.thermometerToolStripMenuItem,
             this.analyticalBalanceToolStripMenuItem});
             this.resultsToolStripMenuItem.Name = "resultsToolStripMenuItem";
-            this.resultsToolStripMenuItem.Size = new System.Drawing.Size(69, 26);
+            this.resultsToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
             this.resultsToolStripMenuItem.Text = "Results";
             this.resultsToolStripMenuItem.Click += new System.EventHandler(this.resultsToolStripMenuItem_Click);
             // 
@@ -174,31 +177,32 @@ namespace Prototype1._0
             this.calculateGradesToolStripMenuItem,
             this.clearAllDataToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.viewToolStripMenuItem.Text = "View";
             // 
             // graphToolStripMenuItem
             // 
             this.graphToolStripMenuItem.Name = "graphToolStripMenuItem";
-            this.graphToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.graphToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.graphToolStripMenuItem.Text = "Graph";
+            this.graphToolStripMenuItem.Click += new System.EventHandler(this.graphToolStripMenuItem_Click);
             // 
             // studentNamesToolStripMenuItem
             // 
             this.studentNamesToolStripMenuItem.Name = "studentNamesToolStripMenuItem";
-            this.studentNamesToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.studentNamesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.studentNamesToolStripMenuItem.Text = "Student Names";
             // 
             // calculateGradesToolStripMenuItem
             // 
             this.calculateGradesToolStripMenuItem.Name = "calculateGradesToolStripMenuItem";
-            this.calculateGradesToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.calculateGradesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.calculateGradesToolStripMenuItem.Text = "Calculate Grades";
             // 
             // clearAllDataToolStripMenuItem
             // 
             this.clearAllDataToolStripMenuItem.Name = "clearAllDataToolStripMenuItem";
-            this.clearAllDataToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.clearAllDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.clearAllDataToolStripMenuItem.Text = "Clear All Data";
             // 
             // pictureBox1
@@ -314,11 +318,19 @@ namespace Prototype1._0
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(387, 0);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(8, 8);
+            this.progressBar1.TabIndex = 15;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1180, 716);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
@@ -333,6 +345,7 @@ namespace Prototype1._0
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Measurement Checker";
@@ -378,6 +391,7 @@ namespace Prototype1._0
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

@@ -11,6 +11,7 @@ using System.IO;
 using System.Data.OleDb;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Prototype1._0
 {
@@ -21,6 +22,10 @@ namespace Prototype1._0
      * **/
     public partial class Form1 : Form
     {
+        public DataTable theDataContainer = new DataTable();
+        public Series theData = new Series("Data");
+        String[] tables;
+
         public Form1()
         {
             InitializeComponent();
@@ -73,7 +78,6 @@ namespace Prototype1._0
             theDialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
             theDialog.InitialDirectory = @"C:\";
 
-            DataTable theDataContainer = new DataTable();
             DataRow row;
 
             if (theDialog.ShowDialog() == DialogResult.OK)
@@ -100,12 +104,14 @@ namespace Prototype1._0
                         int rowCount = excelRange.Rows.Count; //get row count of excel sheet
                         int colCount = excelRange.Columns.Count; //get column cout of excel data 
 
-                        //get row data of Excel sheet 
+                        this.tables = new string[colCount];
+                        //get the labels of Excel sheet 
                         for(int i = 1; i <= rowCount; i++)
                         {
                             for (int j = 1; j <= colCount; j++)
                             {
                                 theDataContainer.Columns.Add(excelRange.Cells[i, j].Value2.ToString());
+                                tables[i - 1] = excelRange.Cells[i, j].Value2.ToString();
                             }
                             break;
                         }
@@ -163,6 +169,18 @@ namespace Prototype1._0
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void graphToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 graphForm = new Form2();
+            graphForm.Show();
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }
