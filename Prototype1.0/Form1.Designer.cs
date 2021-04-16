@@ -192,6 +192,7 @@ namespace Prototype1._0
             this.studentNamesToolStripMenuItem.Name = "studentNamesToolStripMenuItem";
             this.studentNamesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.studentNamesToolStripMenuItem.Text = "Student Names";
+            this.studentNamesToolStripMenuItem.Click += new System.EventHandler(this.studentNamesToolStripMenuItem_Click);
             // 
             // calculateGradesToolStripMenuItem
             // 

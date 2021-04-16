@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
-using System.Data.OleDb;
-using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
-using System.Windows.Forms.DataVisualization.Charting;
+using System.Windows.Forms;
 
 namespace Prototype1._0
 {
@@ -24,10 +15,11 @@ namespace Prototype1._0
     {
         public static DataTable theDataContainer = new DataTable();
         public static Double[] theData;
-        public static String[] labels;
         public static int rowCount;
         public static int colCount;
+        string[] theNames;
         int theDataCount = 0;
+        Boolean showStudentNames = false;
 
        public static double lowValue = 36.4;
 
@@ -109,18 +101,39 @@ namespace Prototype1._0
                         rowCount = excelRange.Rows.Count; //get row count of excel sheet
                         colCount = excelRange.Columns.Count; //get column cout of excel data 
 
-                        labels = new string[colCount];
                         theData = new Double[rowCount];
-                        //get the labels of Excel sheet 
-                        for(int i = 1; i <= rowCount; i++)
-                        {
-                            for (int j = 1; j <= colCount; j++)
+                        theNames = new string[rowCount];
+                        //get the labels of Excel sheet
+                       // if(this.showStudentNames == true)
+                       // {
+                            for (int i = 1; i <= rowCount; i++)
                             {
-                                theDataContainer.Columns.Add(excelRange.Cells[i, j].Value2.ToString());
-                                labels[i - 1] = excelRange.Cells[i, j].Value2.ToString();
+                                for (int j = 1; j <= colCount; j++)
+                                {
+                                    theDataContainer.Columns.Add(excelRange.Cells[i, j].Value2.ToString());
+                                }
+                                break;
                             }
-                            break;
-                        }
+                      //  }
+                        /**else
+                        {
+                            for (int i = 1; i <= rowCount; i++)
+                            {
+                                for (int j = 2; j <= colCount; j++)
+                                {
+                                    theDataContainer.Columns.Add(excelRange.Cells[i, j].Value2.ToString());
+                                }
+                                break;
+                            }
+
+                            int theNamesCount = 0;
+                            for(int k = 1; k <= rowCount; k++)
+                            {
+                                theNames[theNamesCount] = excelRange.Cells[k, 1].Value2.ToString();
+                                theNamesCount++;
+                            }
+                       } **/
+
 
                         
                         int rowCounter; //used for row index number 
@@ -150,9 +163,9 @@ namespace Prototype1._0
                             }
                             theDataContainer.Rows.Add(row); //add the row to the DataTable
                         }
-
+                        
                         dataGridView1.DataSource = theDataContainer; //assign DataTable as Datasource for DataGridview
-
+                        dataGridView1.Columns[0].Visible = false;
                         //close and clean excel process
                         GC.Collect();
                         GC.WaitForPendingFinalizers();
@@ -199,5 +212,9 @@ namespace Prototype1._0
 
         }
 
+        private void studentNamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Columns[0].Visible = true;
+        }
     }
 }
