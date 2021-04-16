@@ -19,6 +19,7 @@ namespace Prototype1._0
         public static int colCount;
         string[] theNames;
         int theDataCount = 0;
+        double instructorsValue;
         Boolean showStudentNames = false;
 
        public static double lowValue = 36.4;
@@ -215,6 +216,12 @@ namespace Prototype1._0
         private void studentNamesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView1.Columns[0].Visible = true;
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            //need to put this in a grade method 
+            instructorsValue = Convert.ToDouble(textBox4.Text);
         }
     }
 }
