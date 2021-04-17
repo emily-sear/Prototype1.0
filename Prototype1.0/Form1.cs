@@ -8,16 +8,24 @@ namespace Prototype1._0
 {
     /**
      * Emily Sear (Programmer), Trey Karsten (Design Architecture), Andrew Cizek, and Turner Frazier
-     * 10 April 2021 
-     * Sprint 1 
+     * 17 April 2021 
+     * Sprint 2
      * **/
+
+    /**
+     * Functionality of the sprint: 
+     * Focus on the "View" portion of the application 
+     * Make a working graph section 
+     * Allow user to view the student names
+     * allow user to enter in instructor values (not allowed to grade quite yet
+     **/
+
     public partial class Form1 : Form
     {
         public static DataTable theDataContainer = new DataTable();
         public static Double[] theData;
         public static int rowCount;
         public static int colCount;
-        string[] theNames;
         int theDataCount = 0;
         double instructorsValue;
         Boolean showStudentNames = false;
@@ -103,10 +111,7 @@ namespace Prototype1._0
                         colCount = excelRange.Columns.Count; //get column cout of excel data 
 
                         theData = new Double[rowCount];
-                        theNames = new string[rowCount];
                         //get the labels of Excel sheet
-                       // if(this.showStudentNames == true)
-                       // {
                             for (int i = 1; i <= rowCount; i++)
                             {
                                 for (int j = 1; j <= colCount; j++)
@@ -115,28 +120,7 @@ namespace Prototype1._0
                                 }
                                 break;
                             }
-                      //  }
-                        /**else
-                        {
-                            for (int i = 1; i <= rowCount; i++)
-                            {
-                                for (int j = 2; j <= colCount; j++)
-                                {
-                                    theDataContainer.Columns.Add(excelRange.Cells[i, j].Value2.ToString());
-                                }
-                                break;
-                            }
 
-                            int theNamesCount = 0;
-                            for(int k = 1; k <= rowCount; k++)
-                            {
-                                theNames[theNamesCount] = excelRange.Cells[k, 1].Value2.ToString();
-                                theNamesCount++;
-                            }
-                       } **/
-
-
-                        
                         int rowCounter; //used for row index number 
                         for(int i = 2; i < rowCount; i++)
                         {
@@ -166,7 +150,7 @@ namespace Prototype1._0
                         }
                         
                         dataGridView1.DataSource = theDataContainer; //assign DataTable as Datasource for DataGridview
-                        dataGridView1.Columns[0].Visible = false;
+                        dataGridView1.Columns[0].Visible = false; //makes the names invisible originally
                         //close and clean excel process
                         GC.Collect();
                         GC.WaitForPendingFinalizers();
@@ -215,7 +199,7 @@ namespace Prototype1._0
 
         private void studentNamesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns[0].Visible = true;
+            dataGridView1.Columns[0].Visible = true; //changes the names to visible
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
