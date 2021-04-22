@@ -63,6 +63,16 @@ namespace Prototype1._0.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _118976197_183548856633170_5248159684347062085_o {
+            get {
+                object obj = ResourceManager.GetObject("118976197_183548856633170_5248159684347062085_o", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Glass_cylinder_32854 {
             get {
                 object obj = ResourceManager.GetObject("Glass_cylinder_32854", resourceCulture);
@@ -76,6 +86,16 @@ namespace Prototype1._0.Properties {
         internal static System.Drawing.Bitmap glass_cylinder_new {
             get {
                 object obj = ResourceManager.GetObject("glass_cylinder_new", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IMG_335BDB3481D3_1 {
+            get {
+                object obj = ResourceManager.GetObject("IMG_335BDB3481D3-1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

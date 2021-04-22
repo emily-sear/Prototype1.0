@@ -47,7 +47,6 @@ namespace Prototype1._0
             this.studentNamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calculateGradesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearAllDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -61,9 +60,10 @@ namespace Prototype1._0
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -76,7 +76,7 @@ namespace Prototype1._0
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.MdiWindowListItem = this.viewToolStripMenuItem;
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1180, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1180, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -88,7 +88,7 @@ namespace Prototype1._0
             this.instructorValuesToolStripMenuItem,
             this.exportToolStripMenuItem});
             this.dataToolStripMenuItem.Name = "dataToolStripMenuItem";
-            this.dataToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.dataToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
             this.dataToolStripMenuItem.Text = "Data";
             this.dataToolStripMenuItem.Click += new System.EventHandler(this.dataToolStripMenuItem_Click);
             // 
@@ -135,7 +135,7 @@ namespace Prototype1._0
             this.thermometerToolStripMenuItem,
             this.analyticalBalanceToolStripMenuItem});
             this.resultsToolStripMenuItem.Name = "resultsToolStripMenuItem";
-            this.resultsToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
+            this.resultsToolStripMenuItem.Size = new System.Drawing.Size(69, 26);
             this.resultsToolStripMenuItem.Text = "Results";
             this.resultsToolStripMenuItem.Click += new System.EventHandler(this.resultsToolStripMenuItem_Click);
             // 
@@ -144,30 +144,35 @@ namespace Prototype1._0
             this.graduatedCylinderToolStripMenuItem.Name = "graduatedCylinderToolStripMenuItem";
             this.graduatedCylinderToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.graduatedCylinderToolStripMenuItem.Text = "Graduated Cylinder";
+            this.graduatedCylinderToolStripMenuItem.Click += new System.EventHandler(this.graduatedCylinderToolStripMenuItem_Click);
             // 
             // hydrometerToolStripMenuItem
             // 
             this.hydrometerToolStripMenuItem.Name = "hydrometerToolStripMenuItem";
             this.hydrometerToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.hydrometerToolStripMenuItem.Text = "Hydrometer";
+            this.hydrometerToolStripMenuItem.Click += new System.EventHandler(this.hydrometerToolStripMenuItem_Click);
             // 
             // buretteToolStripMenuItem
             // 
             this.buretteToolStripMenuItem.Name = "buretteToolStripMenuItem";
             this.buretteToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.buretteToolStripMenuItem.Text = "Burette";
+            this.buretteToolStripMenuItem.Click += new System.EventHandler(this.buretteToolStripMenuItem_Click);
             // 
             // thermometerToolStripMenuItem
             // 
             this.thermometerToolStripMenuItem.Name = "thermometerToolStripMenuItem";
             this.thermometerToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.thermometerToolStripMenuItem.Text = "Thermometer";
+            this.thermometerToolStripMenuItem.Click += new System.EventHandler(this.thermometerToolStripMenuItem_Click);
             // 
             // analyticalBalanceToolStripMenuItem
             // 
             this.analyticalBalanceToolStripMenuItem.Name = "analyticalBalanceToolStripMenuItem";
             this.analyticalBalanceToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.analyticalBalanceToolStripMenuItem.Text = "Analytical Balance";
+            this.analyticalBalanceToolStripMenuItem.Click += new System.EventHandler(this.analyticalBalanceToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -177,45 +182,34 @@ namespace Prototype1._0
             this.calculateGradesToolStripMenuItem,
             this.clearAllDataToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
             this.viewToolStripMenuItem.Text = "View";
             // 
             // graphToolStripMenuItem
             // 
             this.graphToolStripMenuItem.Name = "graphToolStripMenuItem";
-            this.graphToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.graphToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.graphToolStripMenuItem.Text = "Graph";
             this.graphToolStripMenuItem.Click += new System.EventHandler(this.graphToolStripMenuItem_Click);
             // 
             // studentNamesToolStripMenuItem
             // 
             this.studentNamesToolStripMenuItem.Name = "studentNamesToolStripMenuItem";
-            this.studentNamesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.studentNamesToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.studentNamesToolStripMenuItem.Text = "Student Names";
             this.studentNamesToolStripMenuItem.Click += new System.EventHandler(this.studentNamesToolStripMenuItem_Click);
             // 
             // calculateGradesToolStripMenuItem
             // 
             this.calculateGradesToolStripMenuItem.Name = "calculateGradesToolStripMenuItem";
-            this.calculateGradesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.calculateGradesToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.calculateGradesToolStripMenuItem.Text = "Calculate Grades";
             // 
             // clearAllDataToolStripMenuItem
             // 
             this.clearAllDataToolStripMenuItem.Name = "clearAllDataToolStripMenuItem";
-            this.clearAllDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.clearAllDataToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.clearAllDataToolStripMenuItem.Text = "Clear All Data";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Prototype1._0.Properties.Resources.glass_cylinder_new;
-            this.pictureBox1.Location = new System.Drawing.Point(695, 177);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(320, 407);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
@@ -327,6 +321,17 @@ namespace Prototype1._0
             this.progressBar1.Size = new System.Drawing.Size(8, 8);
             this.progressBar1.TabIndex = 15;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Prototype1._0.Properties.Resources._118976197_183548856633170_5248159684347062085_o;
+            this.pictureBox1.Location = new System.Drawing.Point(695, 177);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(320, 407);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -354,8 +359,8 @@ namespace Prototype1._0
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

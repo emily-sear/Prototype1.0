@@ -24,18 +24,19 @@ namespace Prototype1._0
     public partial class Form1 : Form
     {
         //generates table for imported info
-        //
         public static DataTable theDataContainer = new DataTable();
         public static Double[] theData;
-        //
-        //takes row and column count of imported data to generate the table at the right size.
-        //
         public static int rowCount;
         public static int colCount;
-        //
         int theDataCount = 0;
         double instructorsValue;
-        Boolean showStudentNames = false;
+        int nameSpot = 0;
+        int graduatedCylinderSpot = 1;
+        int buretteSpot = 2;
+        int hyrdometerSpot = 3;
+        int thermometerSpot = 4;
+        int balanceSpot = 5;
+
 
        public static double lowValue = 36.4;
 
@@ -83,17 +84,13 @@ namespace Prototype1._0
         {
             Stream myStream = null;
 
-            //Creates an open file dialog box to pull the .xml file from
-            //
+            //Creates an open file dialog box to pull the excel file from
             OpenFileDialog theDialog = new OpenFileDialog();
             theDialog.Title = "Open Excel File with Data";
-            //
 
-            //We don't want anything expect excel files 
-            //
+            //Only allows excel files to be uploaded
             theDialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
             theDialog.InitialDirectory = @"C:\";
-            //
 
             DataRow row;
 
@@ -102,29 +99,23 @@ namespace Prototype1._0
                 try
                 {
                     if((myStream = theDialog.OpenFile()) != null)
-                    {
-                        //generates some info about the file location in order to read the file
-                        //
+                    { 
+                        
                         System.IO.FileInfo fInfo = new System.IO.FileInfo(theDialog.FileName);
                         string strFileLocation = fInfo.FullName;
-                        //
+                        
 
                         //used for passing on the file name for future functions
-                        //
                         string pathName = theDialog.FileName;
                         string fileName = System.IO.Path.GetFileNameWithoutExtension(theDialog.FileName);
-                        //
 
-                        //Opens the info from the first page of the excel sheet.
-                        //
+
+                        //Opens the info from the first page of the excel sheet
                         Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
-
                         Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(pathName);
-
                         Microsoft.Office.Interop.Excel._Worksheet excelWorksheet = excelWorkbook.Sheets[1];
-
                         Microsoft.Office.Interop.Excel.Range excelRange = excelWorksheet.UsedRange;
-                        //
+                      
 
                         rowCount = excelRange.Rows.Count; //get row count of excel sheet
                         colCount = excelRange.Columns.Count; //get column cout of excel data 
@@ -135,7 +126,39 @@ namespace Prototype1._0
                             {
                                 for (int j = 1; j <= colCount; j++)
                                 {
+                                    
+                                    string columnName = excelRange.Cells[i, j].Value2.ToString();
                                     theDataContainer.Columns.Add(excelRange.Cells[i, j].Value2.ToString());
+                                    if (columnName.Contains("Graduated"))
+                                    {
+                                        graduatedCylinderSpot = j - 1;
+                                    Console.WriteLine(j);
+                                }
+                                    else if(columnName.Contains("Names"))
+                                    {
+                                        nameSpot = j -1 ;
+                                        Console.WriteLine(j);
+                                    }
+                                    else if(columnName.Contains("Bur"))
+                                    {
+                                        buretteSpot = j-1;
+                                        Console.WriteLine(j);
+                                    }
+                                    else if(columnName.Contains("Hyrdo"))
+                                    {
+                                        hyrdometerSpot = j-1;
+                                    Console.WriteLine(j);
+                                }
+                                    else if(columnName.Contains("Thermometer"))
+                                    {
+                                        thermometerSpot = j-1;
+                                    Console.WriteLine(j);
+                                }
+                                    else if(columnName.Contains("Balance"))
+                                    {
+                                        balanceSpot = j-1;
+                                    Console.WriteLine(j);
+                                }
                                 }
                                 break;
                             }
@@ -147,17 +170,14 @@ namespace Prototype1._0
                             rowCounter = 0;
                             for(int j = 1; j <= colCount; j++) // loop for available column of excel data 
                             {
-                                //check to see if the cell is empty 
-                                //
                                 if(excelRange.Cells[i, j] != null && excelRange.Cells[i, j].Value2 != null)
                                 {
                                     row[rowCounter] = excelRange.Cells[i, j].Value2.ToString();
-                                    if(j == 2)
+                                    if (j == 2)
                                     {
-                                       theData[theDataCount] = excelRange.Cells[i, j].Value2;
-                                       theDataCount++;
+                                        theData[theDataCount] = excelRange.Cells[i, j].Value2;
+                                        theDataCount++;
                                     }
-                                //
                                     
                                 }
                                 else
@@ -170,22 +190,23 @@ namespace Prototype1._0
                         }
                         
                         dataGridView1.DataSource = theDataContainer; //assign DataTable as Datasource for DataGridview
-                        dataGridView1.Columns[0].Visible = false; //makes the names invisible originally
-                        //close and clean excel process
-                        //
+                        dataGridView1.Columns[nameSpot].Visible = false; //makes the names invisible originally
+                        dataGridView1.Columns[graduatedCylinderSpot].Visible = true;
+                        dataGridView1.Columns[hyrdometerSpot].Visible = false;
+                        dataGridView1.Columns[buretteSpot].Visible = false;
+                        dataGridView1.Columns[thermometerSpot].Visible = false;
+                        dataGridView1.Columns[balanceSpot].Visible = false;
+
+                        //clean up the excel sheet and close it 
                         GC.Collect();
                         GC.WaitForPendingFinalizers();
                         Marshal.ReleaseComObject(excelRange);
                         Marshal.ReleaseComObject(excelWorksheet);
-                        //
-
-                        //quit apps
-                        //
                         excelWorkbook.Close();
                         Marshal.ReleaseComObject(excelWorkbook);
                         excelApp.Quit();
                         Marshal.ReleaseComObject(excelApp);
-                        //
+                        
 
                     }
 
@@ -211,11 +232,10 @@ namespace Prototype1._0
 
         private void graphToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Creates and displays graph.
-            //
+            //Creates and displays table when the "graph" button is clicked
             Form2 graphForm = new Form2();
             graphForm.Show();
-            //
+           
 
         }
 
@@ -226,12 +246,65 @@ namespace Prototype1._0
 
         private void studentNamesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns[0].Visible = true; //changes the names to visible
+            dataGridView1.Columns[nameSpot].Visible = true; //changes the names to visible
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
             instructorsValue = Convert.ToDouble(textBox4.Text); //need to put this in a grade method 
+        }
+
+        private void graduatedCylinderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Columns[graduatedCylinderSpot].Visible = true;
+            dataGridView1.Columns[hyrdometerSpot].Visible = false;
+            dataGridView1.Columns[buretteSpot].Visible = false;
+            dataGridView1.Columns[thermometerSpot].Visible = false;
+            dataGridView1.Columns[balanceSpot].Visible = false;
+
+        }
+
+        private void hydrometerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Columns[graduatedCylinderSpot].Visible = false;
+            dataGridView1.Columns[hyrdometerSpot].Visible = true;
+            dataGridView1.Columns[buretteSpot].Visible = false;
+            dataGridView1.Columns[thermometerSpot].Visible = false;
+            dataGridView1.Columns[balanceSpot].Visible = false;
+
+            //changes the image to the new image
+            pictureBox1.Image = Properties.Resources.glass_cylinder_new;
+            pictureBox1.Refresh();
+            pictureBox1.Visible = true;
+
+
+        }
+
+        private void buretteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Columns[graduatedCylinderSpot].Visible = false;
+            dataGridView1.Columns[hyrdometerSpot].Visible = false;
+            dataGridView1.Columns[buretteSpot].Visible = true;
+            dataGridView1.Columns[thermometerSpot].Visible = false;
+            dataGridView1.Columns[balanceSpot].Visible = false;
+        }
+
+        private void thermometerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Columns[graduatedCylinderSpot].Visible = false;
+            dataGridView1.Columns[hyrdometerSpot].Visible = false;
+            dataGridView1.Columns[buretteSpot].Visible = false;
+            dataGridView1.Columns[thermometerSpot].Visible = true;
+            dataGridView1.Columns[balanceSpot].Visible = false;
+        }
+
+        private void analyticalBalanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Columns[graduatedCylinderSpot].Visible = false;
+            dataGridView1.Columns[hyrdometerSpot].Visible = false;
+            dataGridView1.Columns[buretteSpot].Visible = false;
+            dataGridView1.Columns[thermometerSpot].Visible = false;
+            dataGridView1.Columns[balanceSpot].Visible = true;
         }
     }
 }
