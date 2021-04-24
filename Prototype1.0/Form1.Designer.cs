@@ -213,6 +213,7 @@ namespace Prototype1._0
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(709, 75);
             this.label1.Name = "label1";
@@ -222,6 +223,7 @@ namespace Prototype1._0
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(709, 118);
             this.label2.Name = "label2";
@@ -231,6 +233,7 @@ namespace Prototype1._0
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox1.Location = new System.Drawing.Point(768, 69);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(55, 22);
@@ -239,6 +242,7 @@ namespace Prototype1._0
             // 
             // textBox2
             // 
+            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox2.Location = new System.Drawing.Point(768, 115);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(55, 22);
@@ -246,15 +250,18 @@ namespace Prototype1._0
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Location = new System.Drawing.Point(855, 87);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(160, 34);
             this.button1.TabIndex = 7;
-            this.button1.Text = "Sort Lowest to Highest";
+            this.button1.Text = "Remove Outliers";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(709, 602);
             this.label3.Name = "label3";
@@ -264,6 +271,7 @@ namespace Prototype1._0
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(709, 633);
             this.label4.Name = "label4";
@@ -273,6 +281,7 @@ namespace Prototype1._0
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(709, 660);
             this.label5.Name = "label5";
@@ -282,6 +291,7 @@ namespace Prototype1._0
             // 
             // textBox3
             // 
+            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox3.Location = new System.Drawing.Point(845, 602);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 22);
@@ -289,6 +299,7 @@ namespace Prototype1._0
             // 
             // textBox4
             // 
+            this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox4.Location = new System.Drawing.Point(845, 630);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 22);
@@ -297,6 +308,7 @@ namespace Prototype1._0
             // 
             // textBox5
             // 
+            this.textBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox5.Location = new System.Drawing.Point(845, 657);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 22);
@@ -305,6 +317,7 @@ namespace Prototype1._0
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 62);
             this.dataGridView1.Name = "dataGridView1";
@@ -323,7 +336,9 @@ namespace Prototype1._0
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Prototype1._0.Properties.Resources._118976197_183548856633170_5248159684347062085_o;
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox1.Image = global::Prototype1._0.Properties.Resources.glass_cylinder_new;
             this.pictureBox1.Location = new System.Drawing.Point(695, 177);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(320, 407);

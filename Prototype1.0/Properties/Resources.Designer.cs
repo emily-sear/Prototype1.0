@@ -73,6 +73,36 @@ namespace Prototype1._0.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _25014 {
+            get {
+                object obj = ResourceManager.GetObject("25014", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _71Bt_oSijtL__SL1500_ {
+            get {
+                object obj = ResourceManager.GetObject("71Bt+oSijtL._SL1500_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Capture22 {
+            get {
+                object obj = ResourceManager.GetObject("Capture22", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Glass_cylinder_32854 {
             get {
                 object obj = ResourceManager.GetObject("Glass_cylinder_32854", resourceCulture);
