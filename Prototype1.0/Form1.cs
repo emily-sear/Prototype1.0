@@ -8,9 +8,14 @@ namespace Prototype1._0
 {
     /**
      * Emily Sear (Programmer), Trey Karsten (Design Architecture), Andrew Cizek, and Turner Frazier
-     * 17 April 2021 
-     * Sprint 2
+     * 24 April 2021 
+     * Sprint 3
      * **/
+
+    /**
+     * Lost some files of this project? 
+     * Go to: https://github.com/emily-sear/Prototype1.0 
+     **/
 
     /**
      * Functionality of the sprint: 
@@ -23,21 +28,19 @@ namespace Prototype1._0
 
     public partial class Form1 : Form
     {
-        //generates table for imported info
-        //
-        public static DataTable theDataContainer = new DataTable();
+        //generates tables for each corresponding instrument 
+        public static DataTable theDataContainerGraduatedCylinder = new DataTable();
+        public static DataTable theDataContainerHydrometer = new DataTable();
+        public static DataTable theDataContainerBurette = new DataTable();
+        public static DataTable theDataContainerThermometer = new DataTable();
+        public static DataTable theDataContainerBalance = new DataTable();
+
+        //Next sprint will go through these and see what is actually still being used 
         public static Double[] theData;
-        //
-        //takes row and column count of imported data to generate the table at the right size.
-        //
         public static int rowCount;
         public static int colCount;
-        //
         int theDataCount = 0;
         double instructorsValue;
-        Boolean showStudentNames = false;
-
-       public static double lowValue = 36.4;
 
         public Form1()
         {
@@ -124,49 +127,104 @@ namespace Prototype1._0
                         Microsoft.Office.Interop.Excel._Worksheet excelWorksheet = excelWorkbook.Sheets[1];
 
                         Microsoft.Office.Interop.Excel.Range excelRange = excelWorksheet.UsedRange;
-                        //
+                      
 
                         rowCount = excelRange.Rows.Count; //get row count of excel sheet
                         colCount = excelRange.Columns.Count; //get column cout of excel data 
 
-                        theData = new Double[rowCount];
-                        //get the labels of Excel sheet
-                            for (int i = 1; i <= rowCount; i++)
-                            {
-                                for (int j = 1; j <= colCount; j++)
-                                {
-                                    theDataContainer.Columns.Add(excelRange.Cells[i, j].Value2.ToString());
-                                }
-                                break;
-                            }
+                        Console.WriteLine(colCount);
 
-                        int rowCounter; //used for row index number 
-                        for(int i = 2; i < rowCount; i++)
+                        theData = new Double[rowCount];
+
+                        //Add the labels to each dataContainer
+                        theDataContainerGraduatedCylinder.Columns.Add("Names");
+                        theDataContainerHydrometer.Columns.Add("Names");
+                        theDataContainerBurette.Columns.Add("Names");
+                        theDataContainerThermometer.Columns.Add("Names");
+                        theDataContainerBalance.Columns.Add("Names");
+
+                        theDataContainerGraduatedCylinder.Columns.Add("Values");
+                        theDataContainerHydrometer.Columns.Add("Values");
+                        theDataContainerBurette.Columns.Add("Values");
+                        theDataContainerThermometer.Columns.Add("Values");
+                        theDataContainerBalance.Columns.Add("Values");
+
+                        theDataContainerGraduatedCylinder.Columns.Add("Sig Figs");
+                        theDataContainerHydrometer.Columns.Add("Sig Figs");
+                        theDataContainerBurette.Columns.Add("Sig Figs");
+                        theDataContainerThermometer.Columns.Add("Sig Figs");
+                        theDataContainerBalance.Columns.Add("Sig Figs");
+
+                        theDataContainerGraduatedCylinder.Columns.Add("Units");
+                        theDataContainerHydrometer.Columns.Add("Units");
+                        theDataContainerBurette.Columns.Add("Units");
+                        theDataContainerThermometer.Columns.Add("Units");
+                        theDataContainerBalance.Columns.Add("Units");
+
+                        theDataContainerGraduatedCylinder.Columns.Add("Counted Values");
+                        theDataContainerHydrometer.Columns.Add("Counted Values");
+                        theDataContainerBurette.Columns.Add("Counted Values");
+                        theDataContainerThermometer.Columns.Add("Counted Values");
+                        theDataContainerBalance.Columns.Add("Counted Values");
+
+                        for (int i = 2; i < rowCount; i++)
                         {
-                            row = theDataContainer.NewRow(); //assign new row to DataTable
-                            rowCounter = 0;
-                            for(int j = 1; j <= colCount; j++) // loop for available column of excel data 
-                            {
-                                //check to see if the cell is empty 
-                                //
-                                if(excelRange.Cells[i, j] != null && excelRange.Cells[i, j].Value2 != null)
-                                {
-                                    row[rowCounter] = excelRange.Cells[i, j].Value2.ToString();
-                                    if(j == 2)
-                                    {
-                                       theData[theDataCount] = excelRange.Cells[i, j].Value2;
-                                       theDataCount++;
-                                    }
-                                //
-                                    
-                                }
-                                else
-                                {
-                                    row[i] = "";
-                                }
-                                rowCounter++;
-                            }
-                            theDataContainer.Rows.Add(row); //add the row to the DataTable
+                            //add data to each specified data Container based on which part of the excel sheet it is at
+                           DataRow row = theDataContainerGraduatedCylinder.NewRow(); //assign new row to DataTable
+                            row[0] = excelRange.Cells[i, 1].Value2.ToString();
+                            string[] currentRow = excelRange.Cells[i, 2].Value2.ToString().Split();
+                            row[1] = currentRow[0];
+                            row[2] = currentRow[0];
+                            row[3] = currentRow[1];
+                            row[4] = currentRow[0];
+                            theDataContainerGraduatedCylinder.Rows.Add(row);
+
+                            Console.WriteLine("Made it");
+
+                            DataRow row2  = theDataContainerHydrometer.NewRow(); //assign new row to DataTable
+                            row2[0] = excelRange.Cells[i, 1].Value2.ToString();
+                            string[] currentRow2 = excelRange.Cells[i, 3].Value2.ToString().Split();
+                            row2[1] = currentRow2[0];
+                            row2[2] = currentRow2[0];
+                            row2[3] = currentRow2[1];
+                            row2[4] = currentRow2[0];
+                            theDataContainerHydrometer.Rows.Add(row2);
+
+                            Console.WriteLine("Made it");
+
+                            DataRow row3 = theDataContainerBurette.NewRow(); //assign new row to DataTable
+                            row3[0] = excelRange.Cells[i, 1].Value2.ToString();
+                            string[] currentRow3 = excelRange.Cells[i, 4].Value2.ToString().Split();
+                            row3[1] = currentRow3[0];
+                            row3[2] = currentRow3[0];
+                            //row3[3] = currentRow3[1];
+                            row3[4] = currentRow3[0];
+                            theDataContainerBurette.Rows.Add(row3);
+
+                            Console.WriteLine("Made it");
+
+                            DataRow row4 = theDataContainerThermometer.NewRow(); //assign new row to DataTable
+                            row4[0] = excelRange.Cells[i, 1].Value2.ToString();
+                            string[] currentRow4 = excelRange.Cells[i, 5].Value2.ToString().Split();
+                            row4[1] = currentRow4[0];
+                            row4[2] = currentRow4[0];
+                            row4[3] = currentRow4[1];
+                            row4[4] = currentRow4[0];
+                            theDataContainerThermometer.Rows.Add(row4);
+
+                            Console.WriteLine("Made it");
+
+                            DataRow row5 = theDataContainerBalance.NewRow(); //assign new row to DataTable
+                            row5[0] = excelRange.Cells[i, 1].Value2.ToString();
+                            string[] currentRow5 = excelRange.Cells[i, 6].Value2.ToString().Split();
+                            row5[1] = currentRow5[0];
+                            row5[2] = currentRow5[0];
+                            row5[3] = currentRow5[1];
+                            row5[4] = currentRow5[0];
+                            theDataContainerBalance.Rows.Add(row5);
+
+                            Console.WriteLine("Made it");
+                        
                         }
                         
                         dataGridView1.DataSource = theDataContainer; //assign DataTable as Datasource for DataGridview
@@ -185,7 +243,7 @@ namespace Prototype1._0
                         Marshal.ReleaseComObject(excelWorkbook);
                         excelApp.Quit();
                         Marshal.ReleaseComObject(excelApp);
-                        //
+                        
 
                     }
 
@@ -211,8 +269,11 @@ namespace Prototype1._0
 
         private void graphToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Creates and displays graph.
-            //
+            //Creates and displays table when the "graph" button is clicked
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                Form2.theData[i] = Convert.ToDouble(dataGridView1.Rows[i].Cells[1].Value);
+            }
             Form2 graphForm = new Form2();
             graphForm.Show();
             //
@@ -232,6 +293,75 @@ namespace Prototype1._0
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
             instructorsValue = Convert.ToDouble(textBox4.Text); //need to put this in a grade method 
+        }
+
+        private void graduatedCylinderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = theDataContainerGraduatedCylinder; //changes the dataSource to the Graduated Cylinder
+
+            //changes the image to the new image
+            pictureBox1.Image = Properties.Resources._25014;
+            pictureBox1.Refresh();
+            pictureBox1.Visible = true;
+
+        }
+
+        private void hydrometerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = theDataContainerHydrometer;
+
+            //changes the image to the new image
+            pictureBox1.Image = Properties.Resources._25014;
+            pictureBox1.Refresh();
+            pictureBox1.Visible = true;
+
+
+        }
+
+        private void buretteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = theDataContainerBurette;
+
+            pictureBox1.Image = Properties.Resources.Capture22;
+            pictureBox1.Refresh();
+            pictureBox1.Visible = true;
+
+        }
+
+        private void thermometerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = theDataContainerThermometer;
+
+            pictureBox1.Image = Properties.Resources._71Bt_oSijtL__SL1500_;
+            pictureBox1.Refresh();
+            pictureBox1.Visible = true;
+
+        }
+
+        private void analyticalBalanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = theDataContainerBalance;
+
+            pictureBox1.Image = Properties.Resources._118976197_183548856633170_5248159684347062085_o;
+            pictureBox1.Refresh();
+            pictureBox1.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //gets rid of outliers specified by the instructor
+            for(int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                if(dataGridView1.Rows[i].Cells[1].Value != null)
+                {
+                    if (Convert.ToDouble(dataGridView1.Rows[i].Cells[1].Value.ToString()) < Convert.ToDouble(textBox1.Text) || Convert.ToDouble(dataGridView1.Rows[i].Cells[1].Value.ToString()) > Convert.ToDouble(textBox2.Text))
+                    {
+                        dataGridView1.Rows.RemoveAt(i);
+                        i--;
+                    }
+                }
+
+            }
         }
     }
 }

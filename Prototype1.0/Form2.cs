@@ -12,7 +12,7 @@ namespace Prototype1._0
 {
     public partial class Form2 : Form
     {
-
+        public static double[] theData;
         public Form2()
         {
             InitializeComponent();
@@ -32,75 +32,69 @@ namespace Prototype1._0
             double num2 = 0;
             double num3 = 0;
             double num4 = 0;
-            double num5 = 0;
+            double num5 = 0; //mid point variable
             double num6 = 0;
             double num7 = 0;
             double num8 = 0;
             double num9 = 0;
-            double num10 = 0;
             
             //This entire nested for-if is used to sort the data gotten in Form1 from the spreadsheet into different columns.
             //
-            for (int i = 0; i < Form1.theData.Length; i++)
+            for (int i = 0; i < theData.Length; i++)
             {
-                Console.WriteLine(Form1.theData[i]);
-                if (Form1.theData[i] <= Form1.lowValue)
+                Console.WriteLine(theData[i]);
+                if (theData[i] <= Form1.lowValue)
                 {
                     num1++;
                 }
-                else if (Form1.theData[i] == Form1.lowValue + 1)
+                else if (theData[i] == Form1.lowValue + 1)
                 {
                     num2++;
                 }
-                else if (Form1.theData[i] == Form1.lowValue + 2)
+                else if (theData[i] == Form1.lowValue + 2)
                 {
                     num3++;
                 }
-                else if (Form1.theData[i] == Form1.lowValue + 3)
+                else if (theData[i] == Form1.lowValue + 3)
                 {
                     num4++;
                 }
-                else if (Form1.theData[i] == Form1.lowValue + 4)
+                else if (theData[i] == Form1.lowValue + 4)
                 {
                     num5++;
                 }
-                else if (Form1.theData[i] == Form1.lowValue + 5)
+                else if (theData[i] == Form1.lowValue + 5)
                 {
                     num6++;
                 }
-                else if (Form1.theData[i] == Form1.lowValue + 6)
+                else if (theData[i] == Form1.lowValue + 6)
                 {
                     num7++;
                 }
-                else if (Form1.theData[i] == Form1.lowValue + 7)
+                else if (theData[i] == Form1.lowValue + 7)
                 {
                     num8++;
                 }
-                else if (Form1.theData[i] == Form1.lowValue + 8)
+                else
                 {
                     num9++;
                 }
-                else
-                {
-                    num10++;
-                }
 
             }
-            //
+
+            double midPoint = (Form1.highValue + Form1.lowValue) / 2;
 
             //This points data to the correct X,Y coordinate on the table.
-            //
-            theDataSeries.Points.AddXY(1, num1);
+            theDataSeries.Points.AddXY(Form1.lowValue, num1);
             theDataSeries.Points.AddXY(2, num2);
             theDataSeries.Points.AddXY(3, num3);
             theDataSeries.Points.AddXY(4, num4);
-            theDataSeries.Points.AddXY(5, num5);
+            theDataSeries.Points.AddXY(midPoint, num5);
             theDataSeries.Points.AddXY(6, num6);
             theDataSeries.Points.AddXY(7, num7);
             theDataSeries.Points.AddXY(8, num8);
-            theDataSeries.Points.AddXY(9, num9);
-            theDataSeries.Points.AddXY(10, num10);
-            //
+            theDataSeries.Points.AddXY(Form1.highValue, num9);
+            
 
             this.chart1.Series.Add(theDataSeries); //This stores the data into the table.
         }

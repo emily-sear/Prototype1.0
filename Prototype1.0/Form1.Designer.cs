@@ -392,7 +392,7 @@ namespace Prototype1._0
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.DataGridView dataGridView1 { get; set; }
         private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
