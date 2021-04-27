@@ -59,8 +59,8 @@ namespace Prototype1._0
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -183,32 +183,32 @@ namespace Prototype1._0
             // graphToolStripMenuItem
             // 
             this.graphToolStripMenuItem.Name = "graphToolStripMenuItem";
-            this.graphToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.graphToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.graphToolStripMenuItem.Text = "Graph";
             this.graphToolStripMenuItem.Click += new System.EventHandler(this.graphToolStripMenuItem_Click);
             // 
             // studentNamesToolStripMenuItem
             // 
             this.studentNamesToolStripMenuItem.Name = "studentNamesToolStripMenuItem";
-            this.studentNamesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.studentNamesToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.studentNamesToolStripMenuItem.Text = "Student Names";
             this.studentNamesToolStripMenuItem.Click += new System.EventHandler(this.studentNamesToolStripMenuItem_Click);
             // 
             // calculateGradesToolStripMenuItem
             // 
             this.calculateGradesToolStripMenuItem.Name = "calculateGradesToolStripMenuItem";
-            this.calculateGradesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.calculateGradesToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.calculateGradesToolStripMenuItem.Text = "Calculate Grades";
             // 
             // clearAllDataToolStripMenuItem
             // 
             this.clearAllDataToolStripMenuItem.Name = "clearAllDataToolStripMenuItem";
-            this.clearAllDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.clearAllDataToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.clearAllDataToolStripMenuItem.Text = "Clear All Data";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Prototype1._0.Properties.Resources.glass_cylinder_new;
+            this.pictureBox1.Image = global::Prototype1._0.Properties.Resources._118976197_183548856633170_5248159684347062085_o;
             this.pictureBox1.Location = new System.Drawing.Point(695, 177);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(320, 407);
@@ -309,17 +309,6 @@ namespace Prototype1._0
             this.textBox5.TabIndex = 13;
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 62);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(677, 615);
-            this.dataGridView1.TabIndex = 14;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
-            // 
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(387, 0);
@@ -327,13 +316,23 @@ namespace Prototype1._0
             this.progressBar1.Size = new System.Drawing.Size(8, 8);
             this.progressBar1.TabIndex = 15;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 48);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(677, 638);
+            this.dataGridView1.TabIndex = 17;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1180, 716);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
@@ -392,8 +391,8 @@ namespace Prototype1._0
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
-        public System.Windows.Forms.DataGridView dataGridView1 { get; set; }
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

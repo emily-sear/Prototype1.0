@@ -118,10 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="glass_cylinder_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\glass_cylinder_new.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Glass_cylinder_32854" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Glass_cylinder_32854.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="glass_cylinder_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\glass_cylinder_new.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Capture22" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Capture22.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="25014" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\25014.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="71Bt+oSijtL._SL1500_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\71Bt+oSijtL._SL1500_.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="118976197_183548856633170_5248159684347062085_o" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\118976197_183548856633170_5248159684347062085_o.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

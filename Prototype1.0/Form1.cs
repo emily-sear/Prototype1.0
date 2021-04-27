@@ -8,8 +8,8 @@ namespace Prototype1._0
 {
     /**
      * Emily Sear (Programmer), Trey Karsten (Design Architecture), Andrew Cizek, and Turner Frazier
-     * 24 April 2021 
-     * Sprint 3
+     * 1 May 2021
+     * Sprint 4
      * **/
 
     /**
@@ -36,12 +36,11 @@ namespace Prototype1._0
         public static DataTable theDataContainerBalance = new DataTable();
 
         //Next sprint will go through these and see what is actually still being used 
-        public static Double[] theData;
-        public static int rowCount;
-        public static int colCount;
+        public static double lowValue;
+        public static double highValue;
         int theDataCount = 0;
         double instructorsValue;
-
+        
         public Form1()
         {
             InitializeComponent();
@@ -98,8 +97,6 @@ namespace Prototype1._0
             theDialog.InitialDirectory = @"C:\";
             //
 
-            DataRow row;
-
             if (theDialog.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -127,14 +124,8 @@ namespace Prototype1._0
                         Microsoft.Office.Interop.Excel._Worksheet excelWorksheet = excelWorkbook.Sheets[1];
 
                         Microsoft.Office.Interop.Excel.Range excelRange = excelWorksheet.UsedRange;
-                      
 
-                        rowCount = excelRange.Rows.Count; //get row count of excel sheet
-                        colCount = excelRange.Columns.Count; //get column cout of excel data 
-
-                        Console.WriteLine(colCount);
-
-                        theData = new Double[rowCount];
+                        int rowCount = excelRange.Rows.Count;
 
                         //Add the labels to each dataContainer
                         theDataContainerGraduatedCylinder.Columns.Add("Names");
@@ -179,7 +170,6 @@ namespace Prototype1._0
                             row[4] = currentRow[0];
                             theDataContainerGraduatedCylinder.Rows.Add(row);
 
-                            Console.WriteLine("Made it");
 
                             DataRow row2  = theDataContainerHydrometer.NewRow(); //assign new row to DataTable
                             row2[0] = excelRange.Cells[i, 1].Value2.ToString();
@@ -190,7 +180,6 @@ namespace Prototype1._0
                             row2[4] = currentRow2[0];
                             theDataContainerHydrometer.Rows.Add(row2);
 
-                            Console.WriteLine("Made it");
 
                             DataRow row3 = theDataContainerBurette.NewRow(); //assign new row to DataTable
                             row3[0] = excelRange.Cells[i, 1].Value2.ToString();
@@ -201,7 +190,6 @@ namespace Prototype1._0
                             row3[4] = currentRow3[0];
                             theDataContainerBurette.Rows.Add(row3);
 
-                            Console.WriteLine("Made it");
 
                             DataRow row4 = theDataContainerThermometer.NewRow(); //assign new row to DataTable
                             row4[0] = excelRange.Cells[i, 1].Value2.ToString();
@@ -212,7 +200,6 @@ namespace Prototype1._0
                             row4[4] = currentRow4[0];
                             theDataContainerThermometer.Rows.Add(row4);
 
-                            Console.WriteLine("Made it");
 
                             DataRow row5 = theDataContainerBalance.NewRow(); //assign new row to DataTable
                             row5[0] = excelRange.Cells[i, 1].Value2.ToString();
@@ -222,12 +209,10 @@ namespace Prototype1._0
                             row5[3] = currentRow5[1];
                             row5[4] = currentRow5[0];
                             theDataContainerBalance.Rows.Add(row5);
-
-                            Console.WriteLine("Made it");
                         
                         }
                         
-                        dataGridView1.DataSource = theDataContainer; //assign DataTable as Datasource for DataGridview
+                        dataGridView1.DataSource = theDataContainerGraduatedCylinder; //assign DataTable as Datasource for DataGridview
                         dataGridView1.Columns[0].Visible = false; //makes the names invisible originally
                         //close and clean excel process
                         //
@@ -243,7 +228,10 @@ namespace Prototype1._0
                         Marshal.ReleaseComObject(excelWorkbook);
                         excelApp.Quit();
                         Marshal.ReleaseComObject(excelApp);
-                        
+
+                        findAverage();
+                        setHighValue();
+                        setLowValue();
 
                     }
 
@@ -269,6 +257,7 @@ namespace Prototype1._0
 
         private void graphToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Form2.theData = new double[dataGridView1.RowCount];
             //Creates and displays table when the "graph" button is clicked
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
@@ -298,6 +287,7 @@ namespace Prototype1._0
         private void graduatedCylinderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = theDataContainerGraduatedCylinder; //changes the dataSource to the Graduated Cylinder
+            this.findAverage();
 
             //changes the image to the new image
             pictureBox1.Image = Properties.Resources._25014;
@@ -309,6 +299,7 @@ namespace Prototype1._0
         private void hydrometerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = theDataContainerHydrometer;
+            this.findAverage();
 
             //changes the image to the new image
             pictureBox1.Image = Properties.Resources._25014;
@@ -321,6 +312,7 @@ namespace Prototype1._0
         private void buretteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = theDataContainerBurette;
+            this.findAverage();
 
             pictureBox1.Image = Properties.Resources.Capture22;
             pictureBox1.Refresh();
@@ -331,6 +323,7 @@ namespace Prototype1._0
         private void thermometerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = theDataContainerThermometer;
+            this.findAverage();
 
             pictureBox1.Image = Properties.Resources._71Bt_oSijtL__SL1500_;
             pictureBox1.Refresh();
@@ -341,10 +334,40 @@ namespace Prototype1._0
         private void analyticalBalanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = theDataContainerBalance;
+            this.findAverage();
 
             pictureBox1.Image = Properties.Resources._118976197_183548856633170_5248159684347062085_o;
             pictureBox1.Refresh();
             pictureBox1.Visible = true;
+        }
+
+        private void setLowValue()
+        {
+            double lowest = Convert.ToDouble(dataGridView1.Rows[0].Cells[1].Value);
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                if(Convert.ToDouble(dataGridView1.Rows[i].Cells[1].Value) < lowest)
+                {
+                    lowest = Convert.ToDouble(dataGridView1.Rows[i].Cells[1].Value);
+                }
+
+            }
+            lowValue = lowest;
+        }
+
+        private void setHighValue()
+        {
+            double highest = Convert.ToDouble(dataGridView1.Rows[0].Cells[1].Value);
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                if (Convert.ToDouble(dataGridView1.Rows[i].Cells[1].Value) > highest)
+                {
+                    highest = Convert.ToDouble(dataGridView1.Rows[i].Cells[1].Value);
+                }
+
+            }
+            highValue = highest;
+            Console.WriteLine(highValue);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -362,6 +385,23 @@ namespace Prototype1._0
                 }
 
             }
+
+            lowValue = Convert.ToDouble(textBox1.Text);
+            highValue = Convert.ToDouble(textBox2.Text);
+        }
+
+        private void findAverage()
+        {
+            //finds the average and puts this value in the average textbox (textBox3)
+            double total = 0;
+            for(int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                total += Convert.ToDouble(dataGridView1.Rows[i].Cells[1].Value);
+
+            }
+
+            total = total / (dataGridView1.RowCount - 1);
+            textBox3.Text = Convert.ToString(total);
         }
     }
 }

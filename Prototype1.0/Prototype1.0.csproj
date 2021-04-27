@@ -152,5 +152,17 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Capture22.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\25014.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\71Bt+oSijtL._SL1500_.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\118976197_183548856633170_5248159684347062085_o.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
